@@ -59,189 +59,126 @@
   <div class="absolute top-0 right-0 w-[45rem] h-[45rem] bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-3xl pointer-events-none z-0"></div>
   <div class="absolute bottom-0 left-0 w-[35rem] h-[35rem] bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl pointer-events-none z-0"></div>
 
-  <!-- ================= PROFESSIONAL SPLIT-SCREEN AUTH SCREEN ================= -->
-  <div id="login-screen" class="fixed inset-0 z-50 flex h-screen w-screen bg-brand-deep text-white overflow-hidden font-sans">
+  <!-- ================= REDESIGNED AUTHENTICATION PORTAL ================= -->
+  <div id="login-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-brand-deep text-white p-4 overflow-y-auto font-sans">
     
-    <!-- Left Side: SMM Branding / Promo (Visible on large screens) -->
-    <div class="hidden lg:flex w-1/2 flex-col justify-between p-12 bg-gradient-to-br from-blue-700 via-indigo-950 to-brand-deep relative overflow-hidden">
-      <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 left-0 w-[30rem] h-[30rem] bg-blue-600/10 rounded-full blur-3xl pointer-events-none z-0"></div>
+    <div class="absolute bottom-0 right-0 w-[30rem] h-[30rem] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none z-0"></div>
+    
+    <div class="w-full max-w-[480px] bg-[#0E1527]/80 border border-slate-800/80 rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl relative z-10 space-y-6 my-auto">
       
-      <!-- Brand Logo -->
-      <div class="flex items-center gap-3 relative z-10">
-        <div class="bg-white text-blue-600 p-2.5 rounded-2xl font-black text-2xl shadow-lg">ST</div>
-        <div>
-          <h1 class="font-extrabold text-xl leading-none tracking-wide text-white">ST STEVENX</h1>
-          <span class="text-[10px] text-blue-400 block font-medium">Boost Your Social Presence</span>
-        </div>
+      <!-- Brand Logo / Title -->
+      <div class="text-center space-y-2">
+        <div class="inline-flex bg-gradient-to-tr from-blue-600 to-indigo-600 p-3 rounded-2xl text-white font-black text-2xl tracking-wider shadow-lg shadow-blue-500/20">ST</div>
+        <h1 class="text-xl font-extrabold tracking-wide text-white">ST STEVENX</h1>
+        <p class="text-[11px] text-slate-400 font-medium">Premium Social Media SMM Dashboard</p>
       </div>
 
-      <!-- Feature Highlights -->
-      <div class="space-y-8 relative z-10 max-w-md my-auto font-sans">
-        <h2 class="text-3xl font-black tracking-tight leading-tight">Elevate Your Social Media Success Instantly</h2>
-        <div class="space-y-4 text-slate-300">
-          <div class="flex items-start gap-3.5">
-            <span class="bg-white/10 p-2 rounded-xl text-blue-400"><i class="fa-solid fa-bolt text-sm"></i></span>
-            <div>
-              <h4 class="text-sm font-bold text-white">Instant Order Delivery</h4>
-              <p class="text-xs text-slate-400 mt-0.5">আমাদের সার্ভিসগুলো অর্ডার করার সাথে সাথেই কাজ শুরু করে দেয়।</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-3.5">
-            <span class="bg-white/10 p-2 rounded-xl text-blue-400"><i class="fa-solid fa-shield-halved text-sm"></i></span>
-            <div>
-              <h4 class="text-sm font-bold text-white">100% Safe & Secure Payments</h4>
-              <p class="text-xs text-slate-400 mt-0.5">বিকাশ পার্সোনাল সেন্ড মানি সিস্টেমে নিরাপদ লেনদেনের সুবিধা।</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-3.5">
-            <span class="bg-white/10 p-2 rounded-xl text-blue-400"><i class="fa-brands fa-telegram text-sm"></i></span>
-            <div>
-              <h4 class="text-sm font-bold text-white">24/7 Dedicated Support</h4>
-              <p class="text-xs text-slate-400 mt-0.5">টেলিগ্রাম সাপোর্টের মাধ্যমে যেকোনো প্রশ্নের দ্রুত সমাধান নিশ্চিত করি।</p>
-            </div>
-          </div>
-        </div>
+      <!-- Custom Auth Tabs (Sliding pill-style navigation) -->
+      <div class="bg-slate-900/80 p-1 rounded-xl border border-slate-800 flex relative">
+        <button id="tab-login" onclick="setAuthTab('login')" class="w-1/2 text-xs font-bold py-2.5 rounded-lg transition-all relative z-10 text-white bg-blue-600">Sign In</button>
+        <button id="tab-signup" onclick="setAuthTab('signup')" class="w-1/2 text-xs font-bold py-2.5 rounded-lg transition-all relative z-10 text-slate-400 hover:text-white">Sign Up</button>
       </div>
 
-      <!-- Footer Info -->
-      <div class="text-xs text-slate-400 relative z-10">
-        &copy; 2026 ST STEVENX. All Rights Reserved.
-      </div>
-    </div>
-
-    <!-- Right Side: Auth Forms (Switchable Login / Signup) -->
-    <div class="w-full lg:w-1/2 flex flex-col justify-center items-center p-6 sm:p-12 bg-brand-deep relative font-sans overflow-y-auto">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.06),transparent_50%)] pointer-events-none"></div>
-      
-      <!-- LOGIN CARD -->
-      <div id="login-card" class="w-full max-w-md space-y-5 relative z-10">
-        <!-- Mobile Logo -->
-        <div class="text-center lg:text-left mb-6 lg:hidden">
-          <div class="inline-flex bg-blue-600 p-2.5 rounded-2xl text-white font-black text-xl tracking-tight mb-2">ST</div>
-          <h2 class="text-xl font-black text-white">ST STEVENX</h2>
-        </div>
-
-        <div>
-          <h3 class="text-2xl font-black tracking-tight text-white">Sign In to Dashboard</h3>
-          <p class="text-xs text-slate-400 mt-1">আপনার রেজিস্টার্ড ইমেইল ও পাসওয়ার্ড দিয়ে ড্যাশবোর্ডটি ওপেন করুন।</p>
-        </div>
-
-        <form onsubmit="handleLogin(event)" class="space-y-4 pt-2">
+      <!-- SIGN IN FORM CONTAINER -->
+      <div id="login-form-panel" class="space-y-4">
+        <form onsubmit="handleLogin(event)" class="space-y-4">
           <div>
-            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
+            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-regular fa-envelope"></i></span>
-              <input type="email" id="login-email" required value="johndoe@example.com" class="w-full bg-slate-900/60 border border-slate-800/80 rounded-xl py-3.5 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+              <input type="email" id="login-email" required value="johndoe@example.com" class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-slate-600">
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Password</label>
+            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Password</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" id="login-password" required value="12345678" class="w-full bg-slate-900/60 border border-slate-800/80 rounded-xl py-3.5 pl-11 pr-11 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
-              <button type="button" onclick="togglePasswordVisibility('login-password', 'password-toggle-icon')" class="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-white">
-                <i id="password-toggle-icon" class="fa-regular fa-eye"></i>
+              <input type="password" id="login-password" required value="12345678" class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-11 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+              <button type="button" onclick="togglePasswordVisibility('login-password', 'login-pwd-toggle-icon')" class="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-white">
+                <i id="login-pwd-toggle-icon" class="fa-regular fa-eye"></i>
               </button>
             </div>
           </div>
 
           <div class="flex items-center justify-between text-[11px] text-slate-400 font-sans">
             <label class="flex items-center gap-1.5 cursor-pointer">
-              <input type="checkbox" checked class="rounded bg-slate-900 border-slate-800 text-blue-500 focus:ring-0"> Remember Me
+              <input type="checkbox" checked class="rounded bg-slate-950 border-slate-800 text-blue-500 focus:ring-0"> Remember Me
             </label>
             <a href="#" onclick="showToast('Password reset link sent!')" class="hover:text-blue-500 transition-colors">Forgot Password?</a>
           </div>
 
-          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl text-xs transition-all shadow-lg shadow-blue-500/10 flex items-center justify-center gap-2 mt-2">
-            Sign In <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl text-xs transition-all shadow-lg shadow-blue-500/15 flex items-center justify-center gap-2 mt-2">
+            Sign In to Account <i class="fa-solid fa-arrow-right-to-bracket"></i>
           </button>
         </form>
-
-        <div class="text-center pt-2">
-          <p class="text-xs text-slate-500">Don't have an account? <a href="#" onclick="toggleAuthMode('signup')" class="text-blue-400 font-bold hover:underline">Create Account</a></p>
-        </div>
       </div>
 
-      <!-- SIGNUP CARD -->
-      <div id="signup-card" class="w-full max-w-md space-y-5 relative z-10 hidden">
-        <!-- Mobile Logo -->
-        <div class="text-center lg:text-left mb-6 lg:hidden">
-          <div class="inline-flex bg-blue-600 p-2.5 rounded-2xl text-white font-black text-xl tracking-tight mb-2">ST</div>
-          <h2 class="text-xl font-black text-white">ST STEVENX</h2>
-        </div>
-
-        <div>
-          <h3 class="text-2xl font-black tracking-tight text-white">Create New Account</h3>
-          <p class="text-xs text-slate-400 mt-1">SMM প্যানেলের সেরা সার্ভিসগুলো উপভোগ করতে আপনার সঠিক তথ্য দিয়ে রেজিস্ট্রেশন করুন।</p>
-        </div>
-
-        <form onsubmit="handleSignup(event)" class="space-y-4 pt-1">
+      <!-- SIGN UP FORM CONTAINER -->
+      <div id="signup-form-panel" class="space-y-4 hidden">
+        <form onsubmit="handleSignup(event)" class="space-y-4">
           <div>
-            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
+            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-regular fa-user"></i></span>
-              <input type="text" id="signup-name" required placeholder="John Doe" class="w-full bg-slate-900/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+              <input type="text" id="signup-name" required placeholder="John Doe" class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-slate-600">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Username</label>
+              <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Username</label>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-at"></i></span>
-                <input type="text" id="signup-username" required placeholder="johndoe" class="w-full bg-slate-900/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                <input type="text" id="signup-username" required placeholder="johndoe" class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-slate-600">
               </div>
             </div>
             <div>
-              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Phone Number</label>
+              <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Phone Number</label>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-phone"></i></span>
-                <input type="tel" id="signup-phone" required placeholder="018XXXXXXXX" class="w-full bg-slate-900/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                <input type="tel" id="signup-phone" required placeholder="018XXXXXXXX" class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-slate-600">
               </div>
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
+            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-regular fa-envelope"></i></span>
-              <input type="email" id="signup-email" required placeholder="johndoe@example.com" class="w-full bg-slate-900/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+              <input type="email" id="signup-email" required placeholder="johndoe@example.com" class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-slate-600">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Password</label>
+              <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Password</label>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-lock"></i></span>
-                <input type="password" id="signup-password" required placeholder="••••••••" class="w-full bg-slate-900/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                <input type="password" id="signup-password" required placeholder="••••••••" class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-slate-600">
               </div>
             </div>
             <div>
-              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Confirm Password</label>
+              <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Confirm Password</label>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-lock"></i></span>
-                <input type="password" id="signup-confirm" required placeholder="••••••••" class="w-full bg-slate-900/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                <input type="password" id="signup-confirm" required placeholder="••••••••" class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl py-3 pl-11 pr-4 text-xs font-semibold text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-slate-600">
               </div>
             </div>
           </div>
 
           <div class="flex items-center text-[11px] text-slate-400 font-sans">
             <label class="flex items-center gap-1.5 cursor-pointer">
-              <input type="checkbox" required class="rounded bg-slate-900 border-slate-800 text-blue-500 focus:ring-0"> I agree to the <a href="#" class="text-blue-400 hover:underline">Terms & Conditions</a>
+              <input type="checkbox" required class="rounded bg-slate-950 border-slate-800 text-blue-500 focus:ring-0"> I agree to the <a href="#" class="text-blue-400 hover:underline">Terms & Conditions</a>
             </label>
           </div>
 
-          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl text-xs transition-all shadow-lg shadow-blue-500/10 flex items-center justify-center gap-2 mt-2">
-            Sign Up <i class="fa-solid fa-user-plus"></i>
+          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl text-xs transition-all shadow-lg shadow-blue-500/15 flex items-center justify-center gap-2 mt-2">
+            Create Free Account <i class="fa-solid fa-user-plus"></i>
           </button>
         </form>
-
-        <div class="text-center pt-2">
-          <p class="text-xs text-slate-500">Already have an account? <a href="#" onclick="toggleAuthMode('login')" class="text-blue-400 font-bold hover:underline">Sign In</a></p>
-        </div>
       </div>
 
     </div>
@@ -499,7 +436,7 @@
               </div>
             </div>
 
-            <!-- Right Column: TOP 20 LEADERBOARD -->
+            <!-- Right Leaderboard -->
             <div class="lg:col-span-3 space-y-6">
               <div class="bg-white dark:bg-[#0E1527]/90 rounded-2xl p-5 border border-slate-150 dark:border-slate-800/40 shadow-sm backdrop-blur-md space-y-4 h-[580px] flex flex-col overflow-hidden">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5 shrink-0"><i class="fa-solid fa-trophy text-yellow-500"></i> Top 20 Leaderboard</h3>
@@ -581,9 +518,8 @@
               </form>
             </div>
 
-            <!-- API Management & Security Status -->
+            <!-- API Key management -->
             <div class="lg:col-span-4 space-y-6">
-              <!-- Developer API -->
               <div class="bg-white dark:bg-[#0E1527]/90 p-6 rounded-3xl border border-slate-150 dark:border-slate-800/40 shadow-sm space-y-4 backdrop-blur-md font-sans">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
                   <span>Developer API Key</span>
@@ -650,7 +586,7 @@
             <p class="text-xs text-slate-400 mt-1">আপনার বন্ধুদের রেফার করুন এবং তারা লাইফটাইম যে কোনো ডিপোজিট করলেই পান ৫% ইনস্ট্যান্ট কমিশন সরাসরি আপনার ওয়ালেটে!</p>
           </div>
 
-          <!-- Referral System Stats (Working flawlessly on Phone) -->
+          <!-- Referral System Stats (Working on Phone) -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="bg-white dark:bg-[#0E1527]/90 p-5 rounded-2xl shadow-sm border border-slate-150 dark:border-slate-800/40 flex items-center justify-between">
               <div>
@@ -738,10 +674,8 @@
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <!-- Left Side: Invoice Style bKash Checkout details -->
+            <!-- Left Side: bKash info -->
             <div class="lg:col-span-6 bg-white dark:bg-[#0E1527]/90 p-6 rounded-3xl border border-slate-150 dark:border-slate-800/40 shadow-sm space-y-5 backdrop-blur-md font-sans">
-              
-              <!-- Payment Box Header with Official bKash SVG Logo -->
               <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
                 <div class="flex items-center gap-3">
                   <img src="https://www.logo.wine/a/logo/BKash/BKash-Logo.wine.svg" class="h-10 w-auto object-contain dark:brightness-110 shrink-0" alt="bKash Official Logo">
@@ -752,7 +686,6 @@
                 </div>
               </div>
 
-              <!-- Premium copyable bKash card -->
               <div class="bg-gradient-to-r from-[#E2125D] to-[#F12B7C] p-6 rounded-2xl text-white relative overflow-hidden shadow-lg shadow-pink-500/15">
                 <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
                 <div class="space-y-4">
@@ -768,7 +701,6 @@
                 </div>
               </div>
 
-              <!-- Alerts and Warnings -->
               <div class="space-y-3 pt-2 text-[11px]">
                 <div class="flex items-start gap-2 text-rose-500 bg-rose-50 dark:bg-rose-950/25 p-3 rounded-xl border border-rose-100/50">
                   <i class="fa-solid fa-triangle-exclamation mt-0.5 shrink-0"></i>
@@ -777,7 +709,7 @@
               </div>
             </div>
 
-            <!-- Right Side: Clean submission Form -->
+            <!-- Right Side: Submission Form -->
             <div class="lg:col-span-6 bg-white dark:bg-[#0E1527]/90 p-6 rounded-3xl border border-slate-150 dark:border-slate-800/40 shadow-sm space-y-4 backdrop-blur-md font-sans">
               <h3 class="text-sm font-extrabold text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3 flex items-center gap-2"><i class="fa-solid fa-receipt text-blue-500"></i> Submit Deposit Information</h3>
               
@@ -821,7 +753,6 @@
                 </button>
               </form>
 
-              <!-- Live support help notes with WhatsApp & Telegram direct links -->
               <div class="bg-blue-50/50 dark:bg-blue-950/20 p-4 rounded-2xl border border-blue-100/40 space-y-3">
                 <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 block"><i class="fa-solid fa-circle-question"></i> ইনস্ট্যান্ট ফান্ড অ্যাড সাপোর্ট:</span>
                 <p class="text-[10px] text-slate-500 leading-relaxed">পেমেন্ট ফর্ম সাবমিট করার পর দ্রুত ব্যালেন্স যুক্ত করতে ট্রানজেকশনের স্ক্রিনশট সহ আমাদের টেলিগ্রাম বা হোয়াটসঅ্যাপে যোগাযোগ করুন।</p>
@@ -833,7 +764,7 @@
             </div>
           </div>
 
-          <!-- Deposit history table (CLEANED) -->
+          <!-- Deposit history table -->
           <div class="bg-white dark:bg-[#0E1527]/90 rounded-3xl border border-slate-150 dark:border-slate-800/40 shadow-sm overflow-hidden mt-6 backdrop-blur-md">
             <div class="p-5 border-b border-slate-150 dark:border-slate-800/40 flex items-center gap-2">
               <span class="text-xs bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 px-3 py-1.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left"></i> Recent Deposit History</span>
@@ -935,7 +866,6 @@
             <select id="modal-service" onchange="updateServiceDetails()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-xs font-medium outline-none focus:ring-2 focus:ring-blue-500"></select>
           </div>
           
-          <!-- Premium Cost Breakdown with BDT & verified badge discount -->
           <div class="bg-blue-50/50 dark:bg-blue-950/20 p-4 rounded-2xl text-xs space-y-1.5 border border-blue-100/40 font-sans">
             <div class="flex justify-between">
               <span class="text-slate-400 font-semibold">Rate per 1000:</span>
@@ -949,7 +879,6 @@
               <span class="text-slate-400 font-semibold flex items-center gap-1">
                 <i class="fa-solid fa-gift text-blue-500"></i> Blue Badge Discount:
               </span>
-              <!-- Dynamically locked or unlocked -->
               <span id="modal-discount-tag" class="font-black text-rose-500">-৳0.00</span>
             </div>
             <div class="border-t border-slate-150 dark:border-slate-800/60 pt-1.5 flex justify-between items-center">
@@ -997,7 +926,7 @@
 
     // INTERNAL DYNAMIC STATE (ALL BDT)
     let walletState = {
-      balance: 150.00, // Pre-funded some default testing balance
+      balance: 150.00,
       spent: 0.00,
       orders: 0,
       pending: 0
@@ -1011,12 +940,10 @@
       avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80"
     };
 
-    let refEarningState = 185.00; // Simulated affiliate balance
+    let refEarningState = 185.00;
 
-    // MOCK LEADERBOARD DATA (DYNAMIC)
+    // LEADERBOARD GENERATION
     let leaderboard = [];
-
-    // RANDOM 100 USERS GENERATOR
     function generateLeaderboard() {
       const names = [
         'kaisarvai007', 'smm_boss_bd', 'rakib_reseller', 'shakib_99', 'tanvir_smm', 
@@ -1052,7 +979,6 @@
       leaderboard = list;
     }
 
-    // RENDER TOP 20 LEADERBOARD
     function renderLeaderboard() {
       const me = leaderboard.find(u => u.isMe);
       if(me) {
@@ -1089,25 +1015,19 @@
       });
     }
 
-    // SIMULATED BACKGROUND ACTIVITY
     setInterval(() => {
       if (leaderboard.length === 0) return;
-
       const numActive = Math.floor(1 + Math.random() * 3);
       for(let k = 0; k < numActive; k++) {
         const randIndex = Math.floor(Math.random() * leaderboard.length);
         const user = leaderboard[randIndex];
-        
         if(user && !user.isMe) {
-          const incrementalSpent = 50 + Math.random() * 950;
-          user.spent += incrementalSpent;
+          user.spent += (50 + Math.random() * 950);
         }
       }
-
       renderLeaderboard();
     }, 8500);
 
-    // CHECK BADGE UNLOCK STATUS (SPEND >= 100 BDT)
     function checkBadgeUnlockStatus() {
       const isUnlocked = walletState.spent >= 100.00;
 
@@ -1142,7 +1062,6 @@
       }
     }
 
-    // RENDER STATS UI IN BDT
     function updateStatsUI() {
       document.getElementById('stat-balance').innerText = `৳${walletState.balance.toFixed(2)}`;
       document.getElementById('stat-spent').innerText = `৳${walletState.spent.toFixed(2)}`;
@@ -1153,7 +1072,6 @@
       renderLeaderboard();
     }
 
-    // RENDER SERVICES LIST
     function renderTable(dataToRender = services) {
       const tbody = document.getElementById('services-table-body');
       tbody.innerHTML = '';
@@ -1187,9 +1105,8 @@
       });
     }
 
-    // SPA VIEWS SWITCHER
+    // Tab Switch Controller
     const activeViews = ['dashboard', 'orders', 'add-funds', 'tickets', 'account', 'referrals'];
-
     function switchTab(viewId) {
       activeViews.forEach(v => {
         const el = document.getElementById(`view-${v}`);
@@ -1215,7 +1132,6 @@
       }
     }
 
-    // PASSWORD VISIBILITY TOGGLE
     function togglePasswordVisibility(fieldId, iconId) {
       const pwdInput = document.getElementById(fieldId);
       const pwdIcon = document.getElementById(iconId);
@@ -1228,24 +1144,30 @@
       }
     }
 
-    // TOGGLE AUTHENTICATION CARDS (LOGIN vs SIGNUP)
-    function toggleAuthMode(mode) {
-      const loginCard = document.getElementById('login-card');
-      const signupCard = document.getElementById('signup-card');
-      if (mode === 'signup') {
-        loginCard.classList.add('hidden');
-        signupCard.classList.remove('hidden');
+    // Toggle Tab between Login & Sign Up
+    function setAuthTab(mode) {
+      const tabLogin = document.getElementById('tab-login');
+      const tabSignup = document.getElementById('tab-signup');
+      const loginPanel = document.getElementById('login-form-panel');
+      const signupPanel = document.getElementById('signup-form-panel');
+      
+      if (mode === 'login') {
+        tabLogin.className = "w-1/2 text-xs font-bold py-2.5 rounded-lg transition-all relative z-10 text-white bg-blue-600";
+        tabSignup.className = "w-1/2 text-xs font-bold py-2.5 rounded-lg transition-all relative z-10 text-slate-400 hover:text-white";
+        loginPanel.classList.remove('hidden');
+        signupPanel.classList.add('hidden');
       } else {
-        signupCard.classList.add('hidden');
-        loginCard.classList.remove('hidden');
+        tabSignup.className = "w-1/2 text-xs font-bold py-2.5 rounded-lg transition-all relative z-10 text-white bg-blue-600";
+        tabLogin.className = "w-1/2 text-xs font-bold py-2.5 rounded-lg transition-all relative z-10 text-slate-400 hover:text-white";
+        signupPanel.classList.remove('hidden');
+        loginPanel.classList.add('hidden');
       }
     }
 
-    // HANDLERS
     function handleLogin(event) {
       event.preventDefault();
-      
       const email = document.getElementById('login-email').value;
+      
       if (email && email !== "johndoe@example.com") {
         userDetails.email = email;
         const baseName = email.split('@')[0];
@@ -1253,9 +1175,7 @@
         userDetails.username = baseName.toLowerCase().replace(/[^a-z0-9]/g, '');
       }
 
-      // Sync display headers
       syncUserProfileElements();
-
       showToast('Login Successful! Welcome to ST STEVENX.');
 
       document.getElementById('login-screen').classList.add('hidden');
@@ -1283,16 +1203,13 @@
         return;
       }
 
-      // Save user details state
       userDetails.displayName = name;
       userDetails.username = username;
       userDetails.phone = phone;
       userDetails.email = email;
 
-      // Sync elements
       syncUserProfileElements();
-
-      showToast('Account Created Successfully! Welcome.');
+      showToast('Account Created Successfully!');
 
       document.getElementById('login-screen').classList.add('hidden');
       const appScreen = document.getElementById('app-screen');
@@ -1317,7 +1234,6 @@
       document.getElementById('acc-name').value = userDetails.displayName;
       document.getElementById('acc-email').value = userDetails.email;
 
-      // Update Referral Link text dynamically
       document.getElementById('ref-link-text').innerText = `https://ststevenx.com/register?ref=${userDetails.username}`;
     }
 
@@ -1328,11 +1244,10 @@
       document.getElementById('app-screen').classList.remove('flex');
       document.getElementById('login-screen').classList.remove('hidden');
 
-      toggleAuthMode('login');
+      setAuthTab('login');
       switchTab('dashboard');
     }
 
-    // ACCOUNT UPDATE
     function handleAccountUpdate(event) {
       event.preventDefault();
       const updatedName = document.getElementById('acc-name').value;
@@ -1360,7 +1275,6 @@
       }
     }
 
-    // SUPPORT TICKETS SYSTEM
     function handleTicketSubmit(event) {
       event.preventDefault();
       const subject = document.getElementById('ticket-subject').value;
@@ -1382,7 +1296,6 @@
       document.getElementById('ticket-msg').value = '';
     }
 
-    // ADD FUNDS LIVE INPUT TO FINAL CONVERTER
     function calculateAddFundsConversion() {
       const bdtAmount = parseFloat(document.getElementById('tx-amount').value) || 0;
       if(bdtAmount > 0) {
@@ -1392,7 +1305,6 @@
       }
     }
 
-    // ADD FUNDS SUBMISSION
     function handleTransactionSubmit(event) {
       event.preventDefault();
       
@@ -1438,7 +1350,6 @@
       }, 1000);
     }
 
-    // NEW ORDER MODAL CONTROL
     function openOrderModal(serviceId = null) {
       const modal = document.getElementById('order-modal');
       modal.classList.remove('hidden');
@@ -1525,7 +1436,6 @@
       }
     }
 
-    // ORDER SUBMIT
     function handlePlaceOrder(event) {
       event.preventDefault();
       const srvId = parseInt(document.getElementById('modal-service').value);
@@ -1545,7 +1455,6 @@
       walletState.pending += 1;
       updateStatsUI();
 
-      // APPEND TO ORDER HISTORIES
       const orderBody = document.getElementById('orders-log-table');
       const emptyRow = document.getElementById('empty-orders-row');
       if(emptyRow) emptyRow.remove();
@@ -1578,7 +1487,6 @@
       closeOrderModal();
     }
 
-    // TOAST NOTIFICATION UTILITY
     function showToast(message) {
       const container = document.getElementById('toast-container');
       const toast = document.createElement('div');
@@ -1598,7 +1506,6 @@
       }, 3000);
     }
 
-    // THEME SWITCHER
     function toggleTheme() {
       const html = document.documentElement;
       const themeIcon = document.getElementById('theme-icon');
@@ -1611,13 +1518,11 @@
       }
     }
 
-    // MOBILE SIDEBAR CONTROL
     function toggleMobileSidebar() {
       const sidebar = document.getElementById('sidebar');
       sidebar.classList.toggle('-translate-x-full');
     }
 
-    // SEARCH & CATEGORIES FILTERS
     function handleSearch() {
       const query = document.getElementById('service-search').value.toLowerCase();
       const filtered = services.filter(s => s.name.toLowerCase().includes(query));
@@ -1642,7 +1547,6 @@
       }
     }
 
-    // UTILS
     function copyNumber(num) {
       navigator.clipboard.writeText(num).then(() => {
         showToast(`Number ${num} copied successfully!`);
@@ -1689,7 +1593,6 @@
       showToast(`অর্ডার #${orderId} এর রিফিল রিকোয়েস্ট সফল হয়েছে। ২৪ ঘণ্টার মধ্যে রিফিল সম্পন্ন হবে।`);
     }
 
-    // INITIALIZATION
     window.onload = () => {
       document.getElementById('app-screen').classList.add('hidden');
       document.getElementById('login-screen').classList.remove('hidden');
